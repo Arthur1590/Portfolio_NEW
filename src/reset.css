@@ -1,0 +1,45 @@
+* {
+  font-family: "FiraCode-Regular", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+li, ul {
+  list-style: none;
+  text-decoration: none;
+  color: #000;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*::selection {
+  background: #c778dd;
+  color: #fcfcfd;
+}
+
+*ul,
+div,
+p,
+figure,
+article,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+

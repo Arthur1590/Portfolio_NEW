@@ -1,0 +1,621 @@
+@import url(font.css);
+
+$FiraCode-bold: "FiraCode-Bold";
+$FiraCode-reg: "FiraCode-Regular";
+$FiraCode-light: "FiraCode-Light";
+$FiraCode-med: "FiraCode-Medium";
+$FiraCode-semiBold: "FiraCode-SemiBold";
+
+// colors
+
+$primary: #c778dd;
+$background: #282c33;
+$gray: #fcfcfd;
+$gray2: #abb2bf;
+$white: #fff;
+$opacity-grey: #98a2b3;
+
+html {
+  background: $background;
+  color: #fff;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  & .bg-top {
+    position: absolute;
+    transition: .5s all;
+    width: 100%;
+    top: 0;
+    right: 0;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+  }
+  & .bg-bot {
+    position: absolute;
+    transition: .5s all;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+    rotate: -180deg;
+  }
+}
+
+.container {
+  max-width: 1084px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.row__container {
+  max-width: 1084px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: flex-start;
+
+  & p {
+    color: $white;
+    font-family: $FiraCode-med;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 2.63rem;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+  & span {
+    color: $primary;
+    font-family: $FiraCode-med;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 2.63rem;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+}
+
+.header {
+  z-index: 9999;
+  & .header__nav {
+    padding: 20px 10px;
+    border-bottom: 1px solid $gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.3s all;
+    box-shadow: none;
+    backdrop-filter: blur(7.5px);
+
+    &-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+
+      & p {
+        color: $white;
+        font-family: $FiraCode-semiBold;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.31rem;
+        letter-spacing: 0%;
+      }
+    }
+
+    &-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      &.active {
+        transform: translateY(0);
+        background: #282c33b8;
+        backdrop-filter: blur(7.5px);
+      }
+    }
+
+    &-link {
+      color: $white;
+      font-family: $FiraCode-med;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.31rem;
+      letter-spacing: 0%;
+      text-transform: none;
+      position: relative;
+
+      &::before {
+        content: "#";
+        position: absolute;
+        left: -15px;
+        padding: 0 5px 0 0;
+        color: $primary;
+        opacity: 0;
+        transition: 0.3s;
+      }
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+
+    &-select {
+      border-radius: 3px;
+      padding: 3px 15px;
+      background: transparent;
+      color: #fff;
+      font-family: $FiraCode-reg;
+      border: none;
+      &:hover {
+        outline: 1px solid $primary;
+        transition: 0.3s all linear;
+        border-radius: 3px;
+      }
+    }
+
+    &-lang {
+      background: $background;
+      padding: 3.5px 0;
+      border: none;
+      outline: none;
+    }
+  }
+  &.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: 0.3s all;
+
+    .header__nav {
+      box-shadow: inset 0px 0px 50px #fcfcfd1b;
+      padding: 20px 10px;
+      border-left: 1px solid $primary;
+      border-bottom: 1px solid $primary;
+      border-right: 1px solid $primary;
+      border-radius: 10px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      transition: 0.3s all;
+    }
+  }
+
+  .menu {
+    position: relative;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    display: none;
+
+    &.active span {
+      width: 0;
+    }
+
+    & span {
+      position: absolute;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: $gray;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: $gray;
+      left: 0;
+      display: block;
+      transition: 0.3s all linear;
+    }
+    &::after {
+      top: 0;
+    }
+    &::before {
+      bottom: 0;
+    }
+    &.active::after {
+      transform: rotate(45deg);
+      top: 9px;
+    }
+    &.active::before {
+      transform: rotate(-45deg);
+      bottom: 8px;
+    }
+  }
+}
+
+.main {
+  overflow: hidden;
+  & section {
+    margin-bottom: 110px;
+  }
+
+  & .hero,
+  .hero__more {
+    display: flex;
+  }
+  
+  & .hero {
+    min-height: 100vh;
+    &.active {
+      display: none;
+    }
+
+  }
+
+  & .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & .hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 32rem;
+    width: 100%;
+
+    & span {
+      color: $primary;
+    }
+
+    & h5 {
+      color: $gray;
+      font-family: $FiraCode-bold;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 2.63rem;
+      letter-spacing: 0%;
+      text-align: left;
+    }
+
+    & p {
+      width: 85%;
+      color: $gray2;
+      font-family: $FiraCode-reg;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.56rem;
+      letter-spacing: 0%;
+      text-align: left;
+    }
+
+    & button {
+      color: $white;
+      font-family: $FiraCode-med;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.31rem;
+      letter-spacing: 0%;
+      text-align: left;
+      background: transparent;
+      padding: 8px 16px;
+      border: 0.06rem solid $primary;
+      transition: all 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        text-shadow: 0px 0px 10px #d5d5d5;
+      }
+    }
+
+    &-profile {
+      position: relative; 
+      border: 0.2rem dashed $gray;
+    }
+    &-myphoto {
+      object-fit: cover;
+      object-position: center;
+      max-width: 457px;
+      width: 100%;
+    }
+    &-decor {
+      position: absolute;
+    }
+    &-decor:nth-last-of-type(1) {
+      top: 10px;
+      left: 10px;
+      object-fit: cover;
+      width: 37%;
+      z-index: -1;
+    }
+    &-decor:nth-last-of-type(2) {
+      bottom: 5px;
+      right: 35px;
+      z-index: 1;
+      object-fit: cover;
+      width: 20%;
+      rotate: 90deg;
+    }
+  }
+
+  .hero__more {
+    display: none;
+    min-height: 100vh;
+    & button {
+      transition: 0.3s all;
+      &:hover {
+        cursor: pointer;
+        text-shadow: 0px 0px 10px #d5d5d5;
+      }
+    }
+
+    &.active {
+      display: block;
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+    & .container {
+      position: relative;
+
+      .hero__more-decor-left {
+        position: absolute;
+        max-width: 20rem;
+        z-index: -1;
+        width: 100%;
+        object-fit: cover;
+        left: 0;
+        top: -1rem;
+      }
+      .hero__more-decor-right {
+        position: absolute;
+        max-width: 20rem;
+        z-index: -1;
+        width: 100%;
+        object-fit: cover;
+        right: 0;
+        bottom: -3rem;
+      }
+
+      & .hero__form {
+        margin-top: 110px;
+
+        max-width: 16rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+
+        & input {
+          width: 100%;
+          outline: 1px solid $gray;
+          background: $background;
+          color: $gray;
+          border-radius: 3px;
+          border: none;
+          padding: 5px 4.5px;
+          &:focus {
+            outline: 2px solid $primary;
+          }
+        }
+
+        & textarea {
+          width: 100%;
+          resize: none;
+          padding: 5px 4.5px;
+          outline: 0.5px solid $gray;
+          border: none;
+          border-radius: 3px;
+          background: $background;
+          color: $gray;
+          &:focus {
+            outline: 2px solid $primary;
+          }
+        }
+
+        & button {
+          color: $white;
+          font-family: $FiraCode-med;
+          font-size: 1rem;
+          font-weight: 500;
+          line-height: 1.31rem;
+          letter-spacing: 0%;
+          text-align: left;
+          background: transparent;
+          padding: 8px 16px;
+          border: 0.06rem solid $primary;
+        }
+      }
+    }
+
+    & .hero__more-socials {
+      display: flex;
+      gap: 1.5rem;
+      & svg {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        transition: 0.3s all ease;
+        &:hover {
+          outline: 1.5px solid #fff;
+          background: #fff;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+      }
+
+      & .telegram {
+        fill: rgb(86, 198, 243);
+      }
+
+      & .whasup {
+        fill: rgb(11, 133, 11);
+      }
+    }
+  }
+
+  // section 2
+
+  .citate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 150px 0 180px 0;
+
+    & .citate__content {
+      max-width: 44.5rem;
+      width: 100%;
+      padding: 32px;
+      outline: 1px solid $gray;
+      position: relative; 
+      transition: .8s all;
+      opacity: 0;
+      transform: translateX(100%);
+      &.showContent {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      & h5 {
+        color: #fff;
+        font-family: $FiraCode-med;
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 1.94rem;
+        letter-spacing: 0%;
+        text-align: left;
+      }
+    }
+
+    & .ciate__conten-desc {
+      position: absolute;
+      width: fit-content;
+      right: -1px;
+      bottom: -4rem;
+      padding: 16px;
+      border: none;
+      border-bottom: 1px solid $gray;
+      border-left: 1px solid $gray;
+      border-right: 1px solid $gray;
+
+      & p {
+        color: #fff;
+        font-family: $FiraCode-reg;
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1.94rem;
+        letter-spacing: 0%;
+        text-align: left;
+      }
+    }
+  }
+
+  // section 2 projects
+
+
+}
+
+.footer {
+  margin-top: 100px;
+  width: 100%;
+  border-top: 1px solid $gray;
+  min-height: 10rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 20px 0;
+
+  & .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & .footer__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    & p {
+      color: $white;
+      font-family: $FiraCode-med;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.31rem;
+      letter-spacing: 0%;
+      text-align: left;
+      & span {
+        color: $primary;
+      }
+    }
+
+    & h5 {
+      color: $white;
+      font-family: $FiraCode-reg;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.31rem;
+      letter-spacing: 0%;
+      text-align: left;
+    }
+
+    // socials
+    &-media {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+
+      h5 {
+        color: $white;
+        font-family: $FiraCode-med;
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 1.94rem;
+        letter-spacing: 0%;
+        text-align: left;
+      }
+
+      & svg {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: none;
+        box-sizing: border-box;
+      }
+
+      & .telegram,
+      .whasup,
+      .github {
+        transition: 0.3s all;
+      }
+
+      & a:hover .telegram,
+      a:hover .whasup,
+      a:hover .github {
+        fill: #fff;
+      }
+    }
+  }
+
+  & .rights {
+    color: rgb(171, 178, 191);
+    font-family: $FiraCode-reg;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.31rem;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+}

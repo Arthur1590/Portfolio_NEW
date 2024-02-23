@@ -1,0 +1,28 @@
+/*  Fira Code  */
+
+@font-face {
+  font-family: 'FiraCode-Bold';
+  src: url(../font/FiraCode-Bold.ttf);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'FiraCode-SemiBold';
+  src: url(../font/FiraCode-SemiBold.ttf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'FiraCode-Regular';
+  src: url(../font/FiraCode-Regular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'FiraCode-Medium';
+  src: url(../font/FiraCode-Medium.ttf);
+  font-weight: 500;
+}
+
+
+
